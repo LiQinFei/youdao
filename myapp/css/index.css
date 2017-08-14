@@ -1,0 +1,19 @@
+#logo{
+	width: 44px;
+	height: 44px;
+	float: left;
+	background: white;
+}
+#searchBut{
+	width: 70%;
+	height: 30px;
+	line-height: 30px;
+	margin: 7px;
+	background: #FFFFFF;
+	border-radius: 30px;
+	float: right;
+	padding-left: 5px;
+}
+.hBg{
+	background: red !important;
+}
