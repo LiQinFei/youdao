@@ -11,10 +11,90 @@
 	</head>
 
 	<body>
-		sub1
+		<div class="mui-content">
+			<div class="mui-slider">
+				
+				<div class="mui-slider-group mui-slider-loop" id="slider1">
+				
+				</div>
+				<div class="mui-slider-indicator" id="point">
+					
+				</div>
+			</div>
+			<ul class="mui-table-view" id="newsListUl">
+			 
+			   
+			</ul>
+		</div>
 		<script src="js/mui.min.js"></script>
+		<script src="js/h.js" type="text/javascript" charset="utf-8"></script>
 		<script type="text/javascript" charset="utf-8">
 			mui.init();
+			var _index, _self, _next;
+			mui.plusReady(function() {
+				//获取轮播内容
+				mui.get(
+					'http://hoa.hcoder.net/index.php?user=hcoder&pwd=hcoder&m=lunbo',
+					function(res){
+				
+						var items = res.split('--hcSplitor--');
+						var html = '<div class="mui-slider-item"><a href="#">'+ items[items.length-1] +'</a></div>';
+						var points = '';
+						for(var i= 0;i<items.length;i++){
+							html += '<div class="mui-slider-item"><a href="#">'+ items[i] +'</a></div>'
+							points += '<div class="mui-indicator"></div>'
+						}
+						html += '<div class="mui-slider-item"><a href="#">'+ items[0] +'</a></div>'
+						h('#slider1').html(html)
+						h('#point').html(points)
+						
+						var gallery = mui('.mui-slider');
+						gallery.slider({
+						  interval:2000//自动轮播周期，若为0则不自动播放，默认为0；
+						});
+					}
+						
+				)
+				
+				mui.get(
+					'http://hoa.hcoder.net/index.php?user=hcoder&pwd=hcoder&m=mediaList&page=1',
+					function(res){
+						var newsLists = res.split('--hcSplitor--');
+						var html = '';
+						for(var i = 0;i<newsLists.length;i++){
+							var newsItem = newsLists[i].split('--hcListSplitor--');
+							html += ' <li class="mui-table-view-cell mui-media"><a href="javascript:openInfo('+ newsItem[0] +');"><img class="mui-media-object mui-pull-left" src="'+newsItem[1]+'"><div class="mui-media-body"><p class="mui-ellipsis">'+newsItem[2] +'</p></div></a></li>'
+						}
+						
+						h('#newsListUl').html(html)
+					}
+				)
+				
+				_self = plus.webview.currentWebview();
+				_next = plus.webview.getWebviewById('sub2.html');
+				_index = plus.webview.getLaunchWebview();
+				_self.drag({
+					direction: "left",
+					moveMode: "followFinger"
+				}, {
+					view: _next,
+					moveMode: "follow"
+				}, function(e) {
+					if(e.type == 'end' && e.result) {
+						_index.evalJS('h("#navFooter").find("a").removeClass("mui-active");h("#nav2").addClass("mui-active")')
+					}
+				});
+			})
+			
+			function openInfo(id){
+				mui.openWindow({
+					url:'info.html',
+					id:'info.html',
+					extras:{
+						newId :id
+					}
+				})
+			}
 		</script>
 	</body>
 

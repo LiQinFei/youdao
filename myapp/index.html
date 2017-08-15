@@ -12,13 +12,17 @@
 
 	<body>
 		<header class="mui-bar mui-bar-nav hBg">
-		    <div id="logo"></div>
+		    <div id="logo">
+		    	<p>大秦</p>
+		    	<p>词典</p>
+		    </div>
 		    <div id="searchBut">
+		    	<span class="mui-icon mui-icon-search"></span>
 		    	请输入你要翻译的文本
 		    </div>
 		</header>
 			
-		<nav class="mui-bar mui-bar-tab">
+		<nav class="mui-bar mui-bar-tab" id="navFooter">
 		    <a class="mui-tab-item mui-active" id="nav1">
 		        <span class="mui-icon mui-icon-home"></span>
 		        <span class="mui-tab-label">首页</span>
@@ -95,14 +99,15 @@
 				changSub(4)
 			})
 			function changSub(index){
+			
 				var sub1 = plus.webview.getWebviewById('sub1.html');
-				var sub2 = plus.webview.getWebviewById('sub1.htm2');
-				var sub3 = plus.webview.getWebviewById('sub1.htm3');
-				var sub4 = plus.webview.getWebviewById('sub1.htm4');
-				sub1.setStyle({left:(1-index)*100+'100%'});
-				sub2.setStyle({left:(2-index)*100+'100%'});
-				sub3.setStyle({left:(3-index)*100+'100%'});
-				sub4.setStyle({left:(4-index)*100+'100%'});
+				var sub2 = plus.webview.getWebviewById('sub2.html');
+				var sub3 = plus.webview.getWebviewById('sub3.html');
+				var sub4 = plus.webview.getWebviewById('sub4.html');
+				sub1.setStyle({left:(1 - index)* 100 +'%'});
+				sub2.setStyle({left:(2 - index)* 100 +'%'});
+				sub3.setStyle({left:(3 - index)* 100 +'%'});
+				sub4.setStyle({left:(4 - index)* 100 +'%'});
 			}
 			
 		</script>

@@ -101,7 +101,7 @@
         },
         "NativeObj":{
         	"description": "原生对象"
-        }
+        },"Share":{}
 	},
 	"plus": {
 		"splashscreen": {
@@ -110,7 +110,7 @@
 		},
 		"runmode": "liberate",/*应用的首次启动运行模式，可取liberate或normal，liberate模式在第一次启动时将解压应用资源（Android平台File API才可正常访问_www目录）*/
 		"signature": "Sk9JTiBVUyBtYWlsdG86aHIyMDEzQGRjbG91ZC5pbw==",/*可选，保留给应用签名，暂不使用*/
-		"distribute": {
+		"distribute": {"plugins":{"share":{"weixin":{"appid":"werwer","appsecret":"werwerwe","description":"可选，微信分享"}}},
 			"apple": {
 				"appid": "",/*iOS应用标识，苹果开发网站申请的appid，如io.dcloud.HelloH5*/
 				"mobileprovision": "",/*iOS应用打包配置文件*/
@@ -188,6 +188,61 @@
 					"xxhdpi": ""
 				}
 			}
+		}
+	},
+	"dependencies": {
+		"pages": {
+			"index.html": {
+				"resources": [
+					"js/h.js",
+					"css/index.css",
+					"js/mui.min.js",
+					"fonts/mui.ttf",
+					"css/mui.css",
+					"sub1.html"
+				],
+				"refer": [
+					"sub4.html",
+					"sub3.html",
+					"sub2.html"
+				],
+				"priority": 0
+			},
+			"sub4.html": {
+				"resources": [
+					"js/mui.min.js",
+					"css/mui.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"sub1.html": {
+				"resources": [
+					"js/mui.min.js",
+					"css/mui.css",
+					"js/h.js"
+				],
+				"refer": [
+					"info.html"
+				],
+				"priority": 0
+			},
+			"info.html": {
+				"resources": [
+					"js/h.js",
+					"css/index.css",
+					"js/mui.min.js",
+					"css/mui.css",
+					"fonts/mui.ttf"
+				],
+				"refer": [],
+				"priority": 0
+			}
+		},
+		"idle": {
+			"resources": [
+				"copy.html"
+			]
 		}
 	}
 }
